@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script type="text/javascript" src="{{ url_for('static',filename='echarts.js') }}"></script>
+    <script src="{{url_for('static',filename='vintage.js')}}"></script>
+    <div id='main' style="height:800px;width: 1200px"></div>
+    <script>
+        var myChart=echarts.init(document.getElementById('main'),'vintage');
+        myChart.setOption(option={
+            title: {
+                text: '显卡与数量对比'
+            },
+            tooltip: {},
+            legend: {
+                data: ['显卡']
+            },
+            radar: {
+                // shape: 'circle',
+                name: {
+                    textStyle: {
+                        color: '#fff',
+                        backgroundColor: '#999',
+                        borderRadius: 3,
+                        padding: [3, 5]
+                    }
+                },
+                indicator: [
+                    { name: '独立显卡', max: {{ max_n |safe }}},
+                    { name: '集成显卡', max: {{ max_n |safe }}},
+                    { name: '高性能游戏独立显卡', max: {{ max_n |safe }}},
+                    { name: '入门级游戏独立显卡', max: {{ max_n |safe }}},
+                    { name: '发烧级游戏光线追踪显卡', max: {{ max_n |safe }}},
+                ]
+            },
+            series: [{
+                type: 'radar',
+                // areaStyle: {normal: {}},
+                data: [
+                    {
+                        value: eval({{name1|safe}}),
+                        name: '显卡'
+                    },
+                ]
+            }]
+        })
+    </script>
+</body>
+</html>

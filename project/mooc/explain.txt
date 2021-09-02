@@ -1,0 +1,7 @@
+python版本为：3.5.2
+
+extra_apps  存放第三方源码
+media 用户上传的文件
+requirements.txt 指明的第三方包
+
+需要安装mysql驱动

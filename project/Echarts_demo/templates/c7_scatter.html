@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>散点图</title>
+		<script src="../static/echarts.js"></script>
+	</head>
+	<body>
+		<div id="main" style="width: 800px;height:600px;"></div>
+		<script>
+			var myChart=echarts.init(document.getElementById('main'));
+			var option={
+				title:{
+					text:'散点图标题'
+				},
+				xAxis:{
+					name:'x轴名称',
+					data:['类别1','类别2','类别3','类别4']
+				},
+				yAxis:{
+					name:'y轴名称'
+				},
+				series:[{
+					type:'scatter',// 简单的散点图只是柱状图的type属性的bar改成scatter
+					data:[10,20,30,40]
+				}]
+			};
+			myChart.setOption(option);
+		</script>
+	</body>
+</html>

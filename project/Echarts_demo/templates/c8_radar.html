@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>雷达图</title>
+		<script src="../static/echarts.js"></script>
+	</head>
+	<body>
+		<div id="main" style="width: 800px;height:600px;"></div>
+		<script>
+			var myChart=echarts.init(document.getElementById('main'));
+			var option={
+				title:{
+					text:'雷达图标题'
+				},
+				radar:{
+					indicator:[
+						{name:'指示器名称1',max:100},
+						{name:'指示器名称2',max:100},
+						{name:'指示器名称3',max:300},
+						{name:'指示器名称4',max:100},
+						{name:'指示器名称5',max:100},
+					]
+				},
+				series:[{
+					type:'radar',
+					data:[
+						{name:'数据集1',value:[50,80,230,10,100]}
+					]
+				}]
+			};
+			myChart.setOption(option);
+		</script>
+	</body>
+</html>

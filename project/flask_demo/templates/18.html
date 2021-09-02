@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% macro greet(text='sir') %}
+<a>hello {{ text }}</a>
+{% endmacro %}
+
+{{ greet() }}
+<hr/>
+{{ greet('macro') }}
+<br>
+<!--外部宏的使用-->
+{% import '18_macro.html' as mc %}
+{{ mc.introduce('tom') }}
+</body>
+</html>

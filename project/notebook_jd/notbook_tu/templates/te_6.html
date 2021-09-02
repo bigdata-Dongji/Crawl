@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script type="text/javascript" src="{{ url_for('static',filename='echarts.js') }}"></script>
+    <script src="{{url_for('static',filename='vintage.js')}}"></script>
+    <div id='main' style="height:800px;width: 1200px"></div>
+    <script>
+        var myChart=echarts.init(document.getElementById('main'),'vintage');
+        myChart.setOption(option={
+            title: {
+                text: '厚度数量对比'
+            },
+            tooltip: {},
+            legend: {
+                data: ['厚度']
+            },
+            radar: {
+                // shape: 'circle',
+                name: {
+                    textStyle: {
+                        color: '#fff',
+                        backgroundColor: '#999',
+                        borderRadius: 3,
+                        padding: [3, 5]
+                    }
+                },
+                indicator: [
+                    { name: '15.1mm—18.0mm', max: {{ max_n |safe }}},
+                    { name: '20.0mm以上', max: {{ max_n |safe }}},
+                    { name: '18.1mm—20.0mm', max: {{ max_n |safe }}},
+                    { name: '15.0mm及以下', max: {{ max_n |safe }}},
+                    { name: '其他', max: {{ max_n |safe }}},
+                ]
+            },
+            series: [{
+                type: 'radar',
+                // areaStyle: {normal: {}},
+                data: [
+                    {
+                        value: eval({{name1|safe}}),
+                        name: '厚度'
+                    },
+                ]
+            }]
+        })
+    </script>
+</body>
+</html>

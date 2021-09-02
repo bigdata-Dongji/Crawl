@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>词云图</title>
+		<script src="../static/echarts.js"></script>
+		<script src="../static/echarts-wordcloud.js"></script>
+	</head>
+	<body>
+		<div id="main" style="width: 800px;height: 600px;"></div>
+		<script>
+			var myChart=echarts.init(document.getElementById('main'));
+			var option={
+				title:{
+					text:'热门指数-词云图'
+				},
+				series:[{
+					type:'wordCloud',
+					data:[
+						{name:'奔驰',value:50},
+						{name:'宝马',value:100},
+						{name:'劳斯莱斯',value:200},
+						{name:'大众',value:100},
+						{name:'路虎',value:50},
+						{name:'法拉利',value:50},
+						{name:'凯迪拉克',value:70},
+					]
+				}]
+			};
+			myChart.setOption(option);
+		</script>
+	</body>
+</html>

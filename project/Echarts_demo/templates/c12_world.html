@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>世界地图</title>
+		<script src="../static/echarts.js"></script>
+		<script src="../static/world.js"></script>
+	</head>
+	<body>
+		<div id="main" style="width: 800px;height: 600px;"></div>
+		<script>
+			var myChart=echarts.init(document.getElementById('main'));
+			
+			var option={
+				title:{
+					text:'世界地图'
+				},
+				tooltip : {},
+				visualMap:{
+					
+				},
+				
+				series:[{
+					name:'热度',
+					type:'map',
+					// geoIndex:0,
+					mapType:'world',
+					// label:{show:true},
+					data:[
+						{name:'China',value:50},
+						{name:'Russia',value:100},
+						{name:'Canada',value:200},
+						{name:'Germany',value:100},
+						{name:'Japan',value:50},
+						{name:'France',value:50},
+						{name:'Australia',value:70},
+					]
+				}]
+			};
+			myChart.setOption(option);
+		</script>
+	</body>
+</html>

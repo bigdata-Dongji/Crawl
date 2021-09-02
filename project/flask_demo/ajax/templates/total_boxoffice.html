@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../static/jquery.js"></script>
+    <script src="../static/echarts.js"></script>
+</head>
+<body>
+<div id="main" style="height:600px;width:80%;"></div>
+
+<!--<button>click</button>-->
+<script type="text/javascript">
+
+       $(document).ready(function () {
+        var myChart = echarts.init(document.getElementById('main'));
+        $.ajax({
+            type: "post",
+            async: true,
+             /********** Begin **********/
+             //设置 url 路由和设置传输数据类型
+            url: "/total_boxoffice_data",
+            dataType: "json",
+            /********** End **********/
+            success: function (result) {
+                var sourcedata = [];
+                /********** Begin **********/
+                //将数据处理为指定格式后放入sourcedata变量中，格式如下：
+                /*
+                 [[ 58212, 'Matcha Latte'],
+                 [ 78254, 'Milk Tea'],
+                 [41032, 'Cheese Cocoa'],
+                 [12755, 'Cheese Brownie']]
+                */
+                for(i=0;i<result.length;i++){
+                    sourcedata.push([result[i]['boxoffice'],result[i]['movie_name']])
+                }
+                // sourcedata.push([58212])
+                // sourcedata[0].push('Matcha Latte')
+                // sourcedata=[[13500.0, '多力特的奇幻冒险'], [18000.0, '一点就到家'], [25100.0, '急先锋'], [27700.0, '花木兰'], [45300.0, '信条'], [50500.0, '我在时间尽头等你'], [71800.0, '夺冠'], [147700.0, '姜子牙'], [225600.0, '我和我的家乡'], [309200.0, '八佰']];
+                /********** End **********/
+                option = {
+                    title: {
+                        text: '2020电影综合票房top10（单位：万元）',
+                        left: 'center'
+                    },
+                    dataset: {
+                        source: sourcedata
+                    },
+                    grid: {containLabel: true},
+                    xAxis: {name: 'total_boxoffice'},
+                    yAxis: {type: 'category'},
+                    series: [
+                        {
+                            type: 'bar',
+                            encode: {
+                                // Map the "amount" column to X axis.
+                                x: 'total_boxoffice',
+                                // Map the "product" column to Y axis
+                                y: 'product'
+                            }
+                        }
+                    ]
+                };
+                myChart.setOption(option);
+            },
+            error: function (errorMsg) {
+                //请求失败时执行该函数
+                alert("图表请求数据失败!");
+            }
+        });
+    });
+</script>
+</body>
+</html>

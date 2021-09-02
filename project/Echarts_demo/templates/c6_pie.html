@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>环形图</title>
+		<script src="../static/echarts.js"></script>
+	</head>
+	<body>
+		<div id="main" style="width: 800px;height: 600px;"></div>
+		<script>
+			var myChart=echarts.init(document.getElementById('main'));
+			var option={
+				title:{
+					text:'环形图标题'
+				},
+				series:[{
+					type:'pie',
+					radius:['30%','50%'], // 环形图只需在饼图基础上设置radius属性为['内半径','外半径']
+					data:[
+						{name:'名称1',value:20},
+						{name:'名称2',value:30},
+						{name:'名称3',value:50},
+					]
+				}]
+			};
+			myChart.setOption(option);
+		</script>
+	</body>
+</html>

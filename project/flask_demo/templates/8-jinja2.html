@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{{ data.name }}
+<br>
+{{ data.age }}
+<br>
+{{ lists[0] }}
+<br>
+{{ lists[::-1] }}
+<br>
+{{ lists | first }}
+<br>
+{{ lists | last }}
+<br>
+{{ lists | length }}
+<br>
+{{ lists | sum }}
+<br>
+{{ [41,12,15,23,2] | sort }}
+<br>
+{{ data.name | upper }}
+<br>
+{{ data.name | lower}}
+<br>
+<!--单词首字母大写-->
+{{ data.name | title }}
+<br>
+<!--单词首字母大写-->
+{{ data.name | capitalize }}
+<!--禁止转义-->
+{{ '<h1>hello</h1>' | safe}}
+<!--反转-->
+{{ 'hello jack' | reverse }}
+<br>
+{{ 'hello jack' | reverse | reverse }}
+<br>
+<!--格式化-->
+{{ '%s is %d' | format('age',18) }}
+<br>
+<!--字符串截断-->
+{{ 'hello world! hello python!' | truncate(8) }}
+<br>
+{{ 'tom' | greet }}
+<br>
+<br>
+{% if tom_score>=90 %}
+tom 成绩是优秀的
+{% elif tom_score>=60 %}
+tom 成绩是合格的
+{% else %}
+tom 成绩是不合格的
+{% endif %}
+<br>
+<br>
+{% for i in lists %}
+{{ i }}
+<br>
+{% endfor %}
+</body>
+</html>
